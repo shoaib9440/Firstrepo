@@ -1,0 +1,24 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Clone the repository
+                script {
+                    checkout scm
+                }
+            }
+        }
+
+        stage('Execute Script') {
+            steps {
+                // Run the script
+                script {
+                    sh 'chmod +x script.sh'  // Make the script executable, if needed
+                    sh './script.sh'         // Execute the script
+                }
+            }
+        }
+    }
+}
